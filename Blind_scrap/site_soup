@@ -1,0 +1,93 @@
+#!/usr/bin/python2
+# Feel free to modify the code
+
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+from bs4 import BeautifulSoup
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+import MySQLdb
+from parsing import Compare_project
+import retinasdk
+import sys
+import json
+
+if (len(sys.argv) == 1):
+    print "Program need a url in argument"
+    exit(0)
+else:
+    link = sys.argv[1]
+
+#link='https://www.rte-france.com/en'
+binary = FirefoxBinary('/usr/bin/firefox')                                              # Start Browser
+browser = webdriver.Firefox(firefox_binary=binary)
+browser.get(link)
+html_source = browser.page_source
+browser.quit()
+soup = BeautifulSoup(html_source,'html.parser')                                         # Get all page
+
+def conform_link(link):                                                                 # Just in case link is not clean for selenium or whatever
+    link =str(link)
+    ret =''
+    linkp = link.split('/')
+    for part in linkp:
+        part =str(part)
+        if (part.startswith('www.', 0, 5)):
+            return (part)
+        else:
+            for l in part:
+                if (l == '.'):
+                    if (part.startswith('www.', 0, 5)):
+                        return (part)
+                    else:
+                        return ("www."+part)
+    return (ret)
+
+def epur_links(links):                                                                  # Clean url string
+    to_scrap = []
+
+    for l in links:
+        if (l != None):
+            if (l.startswith(link) or l.startswith(link2) or l.startswith("/en")):
+                if (len(l) > 13):
+                    to_scrap.append(l)
+    return (to_scrap)
+
+def get_all_link(soup):                                                                 # All is in the name
+    links =[]
+    for l in soup.find_all('a'):
+        links.append(l.get('href'))
+    return (links)
+
+def create_list_page(to_scrap):                                                         # to scrap is all the links get on the page
+    pars = Compare_project()                                                            # So we need to epur other site link from site we need
+    list_page = []
+    for l in to_scrap[0:10]:
+        url = l
+        if (l.startswith("/en")):
+            print "link : ", link, "url : ", url
+            s = pars.Init(link+url, link)
+            list_page.append(s.encode('utf-8'))
+      else:
+            print "link : ", link, "url : ", url
+            s = pars.Init(url, link)
+            list_page.append(s.encode('utf-8'))
+    return list_page
+def ltos(l): #list to string
+    ret = ""
+    for e in l:
+        ret = e + ' '+ ret
+    return ret
+
+link = "http://" + conform_link(link)
+link2 = link[0:4] + 's' + link[4:]
+
+links = get_all_link(soup)
+to_scrap = epur_links(links)
+epur_link = conform_link(link)
+list_page = create_list_page(to_scrap)
+
+conn = MySQLdb.connect(host='127.0.0.1', user='root', passwd='root',                                                                                                
+                               db='Technofi', charset="utf8", use_unicode=True)
+conn.cursor().execute("""INSERT INTO Extern_site (Name,Site,Word) VALUES (%s,%s,%s)""", (epur_link,link,ltos(list_page)))
+conn.commit()

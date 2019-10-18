@@ -1,0 +1,10 @@
+Small scale biomass-based Combined Heat and Power (CHP) has the potential to contribute significantly in the challenges Europe faces 
+ while pursuing to make its energy system smart, clean, flexible, secure, cost competitive and efficient.
+ High efficiencies are achieved by combining heat and power generation, and even cooling can be integrated in such a scheme. 
+ Furthermore, CHP can play an important role in securing electricity supply by balancing a RES based grid ("dispatchable power") to compensate for fluctuating wind and solar electricity.
+ For small scale biomass CHP systems a standardized fuel, enabling optimization of the conversion units and thus creating a cost competitive value chain, is highly preferred.
+ Moreover, to achieve high resource efficiencies at all times a highly flexible ratio between heat and power generation is desired.
+A smart, demand driven unit should be capable of dealing with the fluctuating energy demand and or varying availability of wind solar
+power. In such a case, it is advantageous if the CHP system is flexible enough to adjust its fuel load rapidly, and this is achievable particularly with liquid fuels. 
+ Unfortunately most renewable biomass resources are solid materials with a low energy density, and a preceding liquefaction step seems attractive. The resulting liquid energy carrier is then 
+ used to fuel the CHP unit. Following the reasoning above, the SmartCHP concept has been developed. 

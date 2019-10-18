@@ -1,0 +1,15 @@
+Virtual power plant" offer, consisting of the aggregation of distributed resources (photovoltaic production, heat pumps, inertia heating, EV charging terminals, storage batteries, etc.) that allows..:
+	efficient and scalable management of electrical erasure capabilities
+         to promote self-consumption
+         to be present on the trading markets (capacity, intraday...)
+         to respond to "network" needs and constraints.
+     Portfolio of applications aimed at traditional electricity distributors, energy service companies, etc.
+     Applicatives enabling their users to understand how their energy resources are used, or even optimised, and to participate in an energy community made up of the pooling of production sources and consumption needs
+     Innovative management of tertiary or complex real estate buildings by introducing contractual management concepts such as "SLA management" which make it possible to support network balance exchanges within the managed community
+     Ability to connect heterogeneous physical devices and absorb, process large amounts of information
+     Internally developed IoT platform
+     Optimisation of the efficiency of the elements connected to the platform by drawing up optimised operating schedules
+     Algorithmic skills and integration of external information sources 
+     Solutions deployed on the German market with companies such as Beegy and municipalities such as Stadtwerke Stuttgart
+     Tests by British Gas or The Mobility House
+     Current work with Energias de Portugal and suppliers of photovoltaic and heating solutions

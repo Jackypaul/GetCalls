@@ -1,0 +1,136 @@
+#!/usr/bin/python2
+# Feel free to modify the code
+import retinasdk
+import sys
+import json
+
+f = open('./client_text', 'r')
+text_client = f.read()
+f.close()
+f = open('./bad1', 'r')
+text_bad1 = f.read()
+f.close()
+f = open('./bad2', 'r')
+text_bad2 = f.read()
+f.close()
+f = open('./error_matching', 'r')
+text_error_matching = f.read()
+f.close()
+f = open('./good', 'r')
+text_good = f.read()
+f.close()
+
+fullClient = retinasdk.FullClient("1e7d8460-5a86-11e8-9172-3ff24e827f76")
+
+#############################################################################################################################
+# # Encode a text into a Semantic Fingerprint
+# fullClient.getFingerprintForText("Python is a widely used general-purpose, high-level programming language.")
+
+# # Return keywords from a text
+# fullClient.getKeywordsForText("Python is a widely used general-purpose, high-level programming language.")
+
+# # Returns tokens from an input text
+# fullClient.getTokensForText("Python is a widely used general-purpose, high-level programming language.", POStags="NN,NNP")
+
+# # Slice the input text according to semantic changes (works best on larger texts of at least several sentences)
+# fullClient.getSlicesForText("longer text with several sentences...")
+#############################################################################################################################
+def ltos(l): #list to string
+    ret = ""
+    for e in l:
+        ret = e + ' '+ ret
+    return ret
+
+value_pure_text = []
+value_token = []
+value_keyword = []
+value_name = ["text_bad1","text_bad2","text_error_matching","text_good"]
+
+print "Keywords text_client"
+k_text_client = fullClient.getKeywordsForText(text_client)
+k_text_client = ltos(k_text_client)
+
+print "Keyword satext_bad1"
+k_text_bad1 = fullClient.getKeywordsForText(text_bad1)
+k_text_bad1= ltos(k_text_bad1)
+
+print "Keywords text_bad2"
+k_text_bad2 = fullClient.getKeywordsForText(text_bad2)
+k_text_bad2= ltos(k_text_bad2)
+
+print "Keywords text_error_matching"
+k_text_error_matching = fullClient.getKeywordsForText(text_error_matching)
+k_text_error_matching= ltos(k_text_error_matching)
+
+print "Keywords text_good"
+k_text_good = fullClient.getKeywordsForText(text_good)
+k_text_good= ltos(k_text_good)
+
+print "token from text_client"
+t_text_client = fullClient.getTokensForText(text_client, POStags="NN,NNP")
+t_text_client = ltos(t_text_client)
+
+print "token from text_bad1"
+t_text_bad1 = fullClient.getTokensForText(text_bad1, POStags="NN,NNP")
+t_text_bad1= ltos(t_text_bad1)
+
+print "token from text_bad2"
+t_text_bad2 = fullClient.getTokensForText(text_bad2, POStags="NN,NNP")
+t_text_bad2= ltos(t_text_bad2)
+
+print "token from text_good"
+t_text_good = fullClient.getTokensForText(text_good, POStags="NN,NNP")
+t_text_good= ltos(t_text_good)
+
+print "token from text_error_matching"
+t_text_error_matching = fullClient.getTokensForText(text_error_matching, POStags="NN,NNP")
+t_text_error_matching= ltos(t_text_error_matching)
+
+print "compare text_good & text client: "
+comparison2 = [{"text": text_good}, {"text": text_client}]
+value_pure_text.append()
+print "compare text_bad1 & text client: "
+comparison2 = [{"text": text_bad1}, {"text": text_client}]
+print "compare text_bad2 & text client: "
+comparison2 = [{"text": text_bad2}, {"text": text_client}]
+
+print "compare text_error_matching & text client: "
+comparison2 = [{"text": text_error_matching}, {"text": text_client}]
+print fullClient.compareBulk(json.dumps([comparison2]))
+
+print "//////////////////////////////////////////////////////////////////// COMPARE KEYWORD ////////////////////////////////////////////////////////////////////"
+print "compare text_good & text client:" 
+comparison2 = [{"text": k_text_good}, {"text": k_text_client}]
+
+print "compare text_bad1 & text client: "
+comparison2 = [{"text": k_text_bad1}, {"text": k_text_client}]
+
+print "compare text_bad2 & text client: "
+comparison2 = [{"text": k_text_bad2}, {"text": k_text_client}]
+
+print "compare text_error_matching & text client: "
+comparison2 = [{"text": k_text_error_matching}, {"text": k_text_client}]
+print fullClient.compareBulk(json.dumps([comparison2]))
+
+print "//////////////////////////////////////////////////////////////////// COMPARE TOKEN ////////////////////////////////////////////////////////////////////"
+print "compare text_good & text client: "
+comparison2 = [{"text": t_text_good}, {"text": t_text_client}]
+
+
+print "compare text_bad1 & text client: "
+comparison2 = [{"text": t_text_bad1}, {"text": t_text_client}]
+
+print "compare text_bad2 & text client: "
+comparison2 = [{"text": t_text_bad2}, {"text": t_text_client}]
+print fullClient.compareBulk(json.dumps([comparison2]))
+
+print "compare text_error_matching & text client: "
+comparison2 = [{"text": t_text_error_matching}, {"text": t_text_client}]
+
+# # Return Semantic Fingerprints for numerous texts in a single call
+# fullClient.getFingerprintsForTexts(["first text", "second text"])
+
+# # Make multiple comparisons in a single call
+# comparison1 = [{"term": "synapse"}, {"term": "skylab"}]
+# comparison2 = [{"term": "mir"}, {"text": "skylab was a space station"}]
+# fullClient.compareBulk(json.dumps([comparison1, comparison2]))

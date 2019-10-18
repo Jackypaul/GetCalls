@@ -1,0 +1,13 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-from selenium import webdriver
+
+from Init_BDD import Core_Gest
+
+def welcome():
+    print "There is scrapping python program for eu calls"
+    print "Only for : http://ec.europa.eu/"
+
+if __name__ == "__main__":
+    welcome()
+    start = Core_Gest() # intance Core_Gest from Init_BDD.py file
+    start.Init_Data_base()

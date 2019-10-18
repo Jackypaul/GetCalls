@@ -1,0 +1,22 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-from selenium import webdriver
+
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+from bs4 import BeautifulSoup
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+
+binary = FirefoxBinary('/usr/bin/firefox')
+browser = webdriver.Firefox(firefox_binary=binary)
+link = 'https://ec.europa.eu/research/participants/portal/desktop/en/opportunities/pppa/topics/padr-stf-01-2017.html'
+
+browser.get(link)
+html_source = browser.page_source
+browser.quit()
+soup = BeautifulSoup(html_source,'html.parser')
+
+div_cnt = soup.find_all('div', class_="span9")
+if (div_cnt == []):
+    print 'ok'
+#lm = div_cnt[0].find('h3').text

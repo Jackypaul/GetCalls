@@ -1,0 +1,12 @@
+1528961447560	geckodriver	INFO	geckodriver 0.20.1
+1528961447565	geckodriver	INFO	Listening on 127.0.0.1:56615
+1528961448571	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ljCFFRtDTm07"
+1528961451491	Marionette	INFO	Listening on port 38337
+1528961451583	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1528961922126	geckodriver	INFO	geckodriver 0.20.1
+1528961922129	geckodriver	INFO	Listening on 127.0.0.1:34047
+1528961923136	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.qFQ0Y2XAKrNB"
+1528961925948	Marionette	INFO	Listening on port 46105
+1528961926048	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping

@@ -1,0 +1,73 @@
+1530523939518	geckodriver	INFO	geckodriver 0.20.1
+1530523939525	geckodriver	INFO	Listening on 127.0.0.1:49887
+1530523940541	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.JOpi83aoveGs"
+1530523945709	Marionette	INFO	Listening on port 42313
+1530523946028	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ec.europa.eu/research/participants/portal/js/bootstrap-extension.js?version=4.3.7, line 2385: TypeError: sorter.field is undefined
+1530524127281	geckodriver	INFO	geckodriver 0.20.1
+1530524127307	geckodriver	INFO	Listening on 127.0.0.1:32893
+1530524128295	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.XnV2gS7khXK2"
+1530524132970	Marionette	INFO	Listening on port 38663
+1530524133031	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://ec.europa.eu/research/participants/portal/js/lib/lib.js, line 306: TypeError: c is undefined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530524137949	geckodriver	INFO	geckodriver 0.20.1
+1530524137955	geckodriver	INFO	Listening on 127.0.0.1:35969
+1530524138954	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.S0O3fKLQFwJs"
+1530524142428	Marionette	INFO	Listening on port 41403
+1530524142479	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://ec.europa.eu/research/participants/portal/js/lib/lib.js, line 306: TypeError: c is undefined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530524148628	geckodriver	INFO	geckodriver 0.20.1
+1530524148635	geckodriver	INFO	Listening on 127.0.0.1:34475
+1530524149634	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.RzoP5DF7cZHi"
+1530524153174	Marionette	INFO	Listening on port 40043
+[Child 4302, Chrome_ChildThread] WARNING: pipe error (19): Connection reset by peer: file /build/firefox-BUiTS1/firefox-60.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 4302, Chrome_ChildThread] WARNING: pipe error (18): Connection reset by peer: file /build/firefox-BUiTS1/firefox-60.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 4302, Chrome_ChildThread] WARNING: pipe error (17): Connection reset by peer: file /build/firefox-BUiTS1/firefox-60.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1530530644373	geckodriver	INFO	geckodriver 0.20.1
+1530530644378	geckodriver	INFO	Listening on 127.0.0.1:47565
+1530530645377	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.cIhb0HN0wyW3"
+1530530648569	Marionette	INFO	Listening on port 33479
+1530530648593	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ec.europa.eu/research/participants/portal/js/bootstrap-extension.js?version=4.3.7, line 2385: TypeError: sorter.field is undefined
+1530530845745	geckodriver	INFO	geckodriver 0.20.1
+1530530845749	geckodriver	INFO	Listening on 127.0.0.1:34421
+1530530846748	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.f2eSCKRshKC3"
+1530530849850	Marionette	INFO	Listening on port 34091
+1530530849863	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://ec.europa.eu/research/participants/portal/js/lib/lib.js, line 306: TypeError: c is undefined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530530855575	geckodriver	INFO	geckodriver 0.20.1
+1530530855581	geckodriver	INFO	Listening on 127.0.0.1:33745
+1530530856579	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.nalYuyScD5N6"
+1530530860124	Marionette	INFO	Listening on port 38915
+1530530860191	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://ec.europa.eu/research/participants/portal/js/lib/lib.js, line 306: TypeError: c is undefined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530530864922	geckodriver	INFO	geckodriver 0.20.1
+1530530864927	geckodriver	INFO	Listening on 127.0.0.1:58073
+1530534895966	geckodriver	INFO	geckodriver 0.20.1
+1530534896009	geckodriver	INFO	Listening on 127.0.0.1:59353
+1530534896972	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.rDpcPKsFB9zb"
+1530534902394	Marionette	INFO	Listening on port 38091
+1530534902419	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ec.europa.eu/research/participants/portal/js/bootstrap-extension.js?version=4.3.7, line 2385: TypeError: sorter.field is undefined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530534968029	geckodriver	INFO	geckodriver 0.20.1
+1530534968033	geckodriver	INFO	Listening on 127.0.0.1:51745
+1530534969033	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.peEDOjZvb8nW"
+1530534971970	Marionette	INFO	Listening on port 33893
+1530534972054	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://ec.europa.eu/research/participants/portal/js/lib/lib.js, line 306: TypeError: c is undefined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530534976929	geckodriver	INFO	geckodriver 0.20.1
+1530534976932	geckodriver	INFO	Listening on 127.0.0.1:56795
+1530534977932	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.VXC1yuDq8OtN"
+1530534980746	Marionette	INFO	Listening on port 42361
+1530534980839	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://ec.europa.eu/research/participants/portal/js/lib/lib.js, line 306: TypeError: c is undefined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530534986297	geckodriver	INFO	geckodriver 0.20.1
+1530534986300	geckodriver	INFO	Listening on 127.0.0.1:40527
+1530534987301	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.qEcJDLQY61Jt"

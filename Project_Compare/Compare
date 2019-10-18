@@ -1,0 +1,183 @@
+#!/usr/bin/python2
+# Feel free to modify the code
+import getopt, retinasdk,sys,json,MySQLdb,os
+from string import maketrans
+from site_soup import conform_link, init
+from datetime import datetime
+from multiprocessing import Pool
+from functools import partial
+
+host="127.0.0.1"
+user="root"
+passwd="root"
+db="Technofi"
+fullClient = retinasdk.FullClient("1e7d8460-5a86-11e8-9172-3ff24e827f76")
+conn = MySQLdb.connect(host=host, user=user, passwd=passwd,
+                       db=db, charset="utf8", use_unicode=True)
+cY = datetime.now().year
+cD = datetime.now().day
+cM = datetime.now().month
+nbr_calls_display = 10
+client_text_all = " "
+
+class Stacker:
+    def __init__(self,ide,url,cosine):
+        self.ide = ide
+        self.url = url
+        self.cosine = cosine
+
+def usage():
+    print "this program need two arguments:\n"
+    print "./Compare [-u URL] -t string"
+    print "./Compare [--url URL] --text string"
+    sys.exit(2)
+
+def make_query(conn, tables, column, var_where=None):
+    string = "Select "
+    for c in column:
+        string += c + (',',' ')[c == column[len(column)-1]]
+    string += "from " + tables
+    if (var_where):
+        string += " where " + var_where
+    conn.query(string)
+    r = conn.store_result() #use_result function ties up the ressource server
+    return r.fetch_row(maxrows=0,how=1)
+
+def get_site(url, conn):
+    site = make_query(conn,"Extern_site",["Name"])
+
+    if site == ():
+        return ' '.join(init(url, conn))
+
+    for s in site:
+        if (s["Name"] == conform_link(url)):
+            site_word = make_query(conn, "Extern_site",["Word"],"Name='"+conform_link(url).strip() + "'")
+            return site_word[0]["Word"]
+
+def check_date(string):
+    M = ["Nothing","January","February","March","April","May","June","July","August","September","October","November","December"]
+    l = string.split(' ')
+
+    if int(l[-1]) > cY:
+        return 1
+    if int(l[-1]) == cY and M.index(l[-2]) > cM:
+        return 1
+    if int(l[-1]) == cY and M.index(l[-2]) == cM and int(l[-3]) > cD:
+        return 1
+    return 0
+
+def valid_date(H_info):
+    lw =[]
+
+    for h in H_info:
+        lw.append(h)
+    lw.sort
+    for h in lw:
+        if (h.startswith("Deadline")):
+            if (check_date(H_info[h]) < 1):
+                return (0)
+            else:
+                return (1)
+
+def build_cmpC(topic_d, c_text):
+    lw =[]
+    function = []
+    ret = []
+    for h in topic_d:
+        lw.append(h)
+    lw.sort
+    for h in lw:
+        if (h.startswith("Specific Challenge") or h.startswith("Expected Impact") or h.startswith("Scope")):
+            ret.append([{"text":' '.join(topic_d[h])}, {"text": c_text}])
+    return ret
+
+def aff_first_project(project_tuples):
+    print "Display final"
+    tab = sorted(project_tuples,  key=lambda project: project.cosine) #sort by cosine
+    tab = tab[-nbr_calls_display:]
+
+    for p in tab:
+        i = 0
+        for t in tab:
+            if (p.url == t.url):
+                i+=1
+        if (i == 2):
+            tab.remove(p)
+
+    for p in tab:
+        print p.ide,"in ddb calls :", p.url
+
+def ft_compare(one, c_text):
+    trantab = maketrans(":([{}])\"", "        ")
+    call_txt=""
+    if (len(one) != 5):
+        print "One is not 5 but ", len(one)
+        exit(-2)
+    topic = one['Topic'].encode('utf-8')
+    topic_d = json.loads(one['Topic_description'].encode('utf-8'))
+    H = json.loads(one['Header_info'])
+    if ( topic_d and valid_date(H)):
+        comparaison = build_cmpC(topic_d, c_text)
+
+        c = 0
+        for r in fullClient.compareBulk(json.dumps(comparaison)):
+            # print float(str(r)[25:40])
+            r = str(r)
+            r = r.split(',')
+            c += float((r[3])[len(" weightedScoring="):])
+            print c
+        print "\n"
+        return (Stacker(one["Topic"], one["Url"], c))
+    return "blank"
+
+def compare_data(text, url):
+    global client_text_all
+    project_tuples = []
+    project_text = []
+
+    if (text):
+        client_text_all += text
+    if (url):
+        client_text_all += get_site(url,conn)
+    if not client_text_all:
+        usage()
+    call = make_query(conn, "Calls", ["id","Topic_description","Topic", "Header_info", "Url"])
+    p = Pool(processes=16, maxtasksperchild=300)
+    new_ft = partial(ft_compare, c_text=client_text_all)
+    for i in p.imap_unordered(new_ft, call):
+        if (i == "blank"):
+            continue
+        else:
+            project_tuples.append(i)
+    p.close()
+    p.join()
+
+    conn.close()
+    aff_first_project(project_tuples)
+
+
+if __name__ == "__main__":
+    text = None
+    url = None
+
+    # This two line setting the system default encoding to utf-8
+    # To avoid 'ascii' codec can't encode character
+    # reload(sys)
+    # sys.setdefaultencoding('utf-8')
+    client_text_all += " "
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hut", ["help","url=","text="])
+    except getopt.GetoptError as err:
+        usage()
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            usage()
+        elif opt in ("--text"):
+            text = arg
+        elif opt in ("--url"):
+            url = arg
+        else:
+            assert False, "unhandled option"
+    if (url == None and text == None):
+        usage()
+    compare_data(text, url)

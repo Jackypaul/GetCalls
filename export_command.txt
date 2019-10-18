@@ -1,0 +1,3 @@
+export command for geck pogramm:
+
+$> export PATH=$PATH:/home/jack/Work/B_soup_Test/geck_folder

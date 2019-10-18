@@ -1,0 +1,12 @@
+1531143808348	geckodriver	INFO	geckodriver 0.20.1
+1531143808357	geckodriver	INFO	Listening on 127.0.0.1:39205
+1531143809376	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.BEVBSTDwSUYo"
+
+(firefox:7909): IBUS-WARNING **: Unable to connect to ibus: Could not connect: Connection refused
+1531143812091	Marionette	INFO	Listening on port 33423
+1531143812193	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 7909, Gecko_IOThread] WARNING: pipe error (54): Connection reset by peer: file /build/firefox-hBjmgj/firefox-61.0+build3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531143920709	geckodriver	INFO	geckodriver 0.20.1
+1531143920721	geckodriver	INFO	Listening on 127.0.0.1:46397
+1531143921722	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.r4DAL7N282eo"
